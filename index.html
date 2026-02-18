@@ -1,599 +1,92 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POKER STORE · Jasa Suntik Sosmed</title>
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
-
-        body {
-            background: #0b0e14;
-            display: flex;
-            justify-content: center;
-            padding: 20px 10px;
-        }
-
-        .container {
-            max-width: 780px;
-            width: 100%;
-            background: #f8fafc;
-            border-radius: 40px 40px 30px 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        /* header dengan logo dan teks clone */
-        .header {
-            background: linear-gradient(135deg, #0f212e 0%, #1a2a36 100%);
-            padding: 25px 20px 20px 20px;
-            border-bottom: 4px solid #eab308;
-            position: relative;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .logo-box {
-            background: #ffffff10;
-            backdrop-filter: blur(4px);
-            border-radius: 30px;
-            padding: 10px 25px 10px 20px;
-            border: 1px solid #eab30860;
-            box-shadow: 0 10px 15px -5px #00000050;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .logo-box i {
-            font-size: 3rem;
-            color: #eab308;
-            filter: drop-shadow(0 4px 4px #00000040);
-            margin-right: 8px;
-        }
-
-        .logo-box span {
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 0 #00000030;
-        }
-
-        .clone-tag {
-            background: #b91c1c;
-            color: white;
-            font-weight: 800;
-            font-size: 0.9rem;
-            padding: 6px 18px;
-            border-radius: 40px;
-            margin-left: 5px;
-            border: 2px solid #facc15;
-            letter-spacing: 1px;
-            box-shadow: 0 0 0 2px #0b0e14;
-            display: inline-block;
-        }
-
-        .region-badge {
-            background: #2d3f4e;
-            color: #facc15;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-            margin-top: 15px;
-            border: 1px solid #facc1540;
-        }
-
-        .region-badge i {
-            color: #facc15;
-        }
-
-        /* tombol open order */
-        .open-order {
-            background: #eab308;
-            color: #0b0e14;
-            font-weight: 800;
-            padding: 14px 25px;
-            font-size: 1.7rem;
-            text-align: center;
-            letter-spacing: 4px;
-            border-bottom: 6px solid #b45309;
-            text-transform: uppercase;
-            word-break: break-word;
-        }
-
-        .jasa-suntik {
-            background: #1e293b;
-            color: white;
-            padding: 22px 20px;
-            text-align: center;
-            border-bottom: 2px dashed #eab308;
-        }
-
-        .jasa-suntik h2 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .jasa-suntik h2 span {
-            color: #eab308;
-            background: #00000030;
-            padding: 4px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin: 5px 0;
-        }
-
-        .jasa-suntik p {
-            margin-top: 15px;
-            font-size: 1.1rem;
-            background: #0f172a;
-            padding: 12px 16px;
-            border-radius: 60px;
-            display: inline-block;
-            border: 1px solid #eab30870;
-        }
-
-        .pilih-layanan, .pilih-kategori {
-            padding: 25px 20px 10px 20px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #1e293b;
-        }
-
-        .badge-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 0 20px 15px 20px;
-        }
-
-        .service-btn, .category-btn {
-            background: white;
-            border: 2px solid #cbd5e1;
-            border-radius: 60px;
-            padding: 12px 28px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1e293b;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 0 #94a3b8;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .service-btn i, .category-btn i {
-            color: #eab308;
-            font-size: 1.3rem;
-        }
-
-        .service-btn.active, .category-btn.active {
-            background: #eab308;
-            border-color: #b45309;
-            color: #0b0e14;
-            box-shadow: 0 4px 0 #b45309;
-        }
-
-        .category-btn {
-            background: #f1f5f9;
-            padding: 10px 20px;
-            font-size: 1.1rem;
-        }
-
-        /* panel harga */
-        .price-panel {
-            background: #ffffff;
-            margin: 20px;
-            border-radius: 40px;
-            padding: 25px 18px;
-            box-shadow: inset 0 0 0 1px #e2e8f0, 0 20px 25px -10px #00000030;
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            background: #eab30810;
-            padding: 10px 20px;
-            border-radius: 40px;
-        }
-
-        .panel-header i {
-            font-size: 2.5rem;
-            color: #eab308;
-        }
-
-        .panel-header h3 {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: #0f172a;
-            text-transform: uppercase;
-        }
-
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-        }
-
-        .price-card {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 30px;
-            padding: 14px 8px;
-            text-align: center;
-            font-weight: 700;
-            transition: 0.1s;
-            cursor: pointer;
-            box-shadow: 0 5px 0 #cbd5e1;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.4;
-        }
-
-        .price-card:hover {
-            background: #eab30820;
-            border-color: #eab308;
-            transform: translateY(-2px);
-            box-shadow: 0 7px 0 #b45309;
-        }
-
-        .price-card .amount {
-            font-size: 1.1rem;
-            color: #334155;
-        }
-
-        .price-card .price {
-            font-size: 1.4rem;
-            color: #b45309;
-            font-weight: 800;
-        }
-
-        .price-card .price small {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #64748b;
-        }
-
-        .footer-note {
-            background: #020617;
-            color: white;
-            padding: 28px 20px;
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 800;
-            border-top: 8px solid #eab308;
-        }
-
-        .footer-note span {
-            background: #eab308;
-            color: #020617;
-            padding: 8px 24px;
-            border-radius: 60px;
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 1.2rem;
-            border: 3px solid white;
-        }
-
-        /* responsif */
-        @media (max-width: 550px) {
-            .logo-box span { font-size: 1.8rem; }
-            .open-order { font-size: 1.3rem; }
-            .jasa-suntik h2 { font-size: 1.5rem; }
-        }
-
-        /* admin badge */
-        .whatsapp-credit {
-            background: #25D36610;
-            padding: 10px 20px;
-            text-align: center;
-            border-top: 1px solid #eab30830;
-            color: #075e54;
-            font-weight: 500;
-        }
-        .whatsapp-credit i { color: #25D366; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Poker Store - Jasa Suntik Sosmed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ff0000, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #b30000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      height: 80px;
+    }
+    h1 {
+      margin: 10px 0;
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: rgba(255,255,255,0.8); /* transparan */
+    }
+    th, td {
+      border: 1px solid #b30000;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #ffcccc;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #b30000;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background-color: #ff0000;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <header>
+    <!-- Logo Poker Store yang sudah Anda siapkan -->
+    <img src="logo-pokerstore.png" alt="Poker Store Logo">
+    <h1>OPEN JASA SUNTIK ALL SOSMED</h1>
+    <p>Klik harga & sosmed yang ingin disuntik, otomatis diarahkan ke WhatsApp admin</p>
+  </header>
 
-    <!-- header dengan logo (icon replaced sebagai logo) -->
-    <div class="header">
-        <div class="logo-area">
-            <div class="logo-box">
-                <i class="fas fa-crown"></i> <!-- logo elegan -->
-                <span>POKER STORE</span>
-            </div>
-            <div class="clone-tag"><i class="fas fa-skull"></i> HATI-HATI CLONE</div>
-        </div>
-        <div class="region-badge">
-            <i class="fas fa-map-pin"></i> REGION JAWA BARAT · ORIGINAL 100%
-        </div>
-    </div>
+  <div class="container">
+    <h2>Layanan</h2>
+    <a href="#tiktok" class="btn">TikTok</a>
+    <a href="#whatsapp" class="btn">WhatsApp</a>
+    <a href="#instagram" class="btn">Instagram</a>
+    <a href="#telegram" class="btn">Telegram</a>
+    <a href="#youtube" class="btn">YouTube</a>
 
-    <!-- open order banner -->
-    <div class="open-order">
-        <i class="fas fa-bolt" style="margin-right: 10px;"></i> OPEN ORDER <i class="fas fa-bolt" style="margin-left: 10px;"></i>
-    </div>
+    <h2 id="tiktok">Follower TikTok</h2>
+    <table>
+      <tr><th>Jumlah</th><th>Harga</th><th>Pesan</th></tr>
+      <tr><td>100</td><td>4K</td><td><a class="btn" href="https://wa.me/628xxxxxxx?text=Order+100+Follower+TikTok+4K">Pesan</a></td></tr>
+      <tr><td>200</td><td>6K</td><td><a class="btn" href="https://wa.me/628xxxxxxx?text=Order+200+Follower+TikTok+6K">Pesan</a></td></tr>
+      <!-- Tambahkan baris sesuai daftar harga -->
+    </table>
 
-    <!-- JASA SUNTIK ALL SOSMED -->
-    <div class="jasa-suntik">
-        <h2><span>🔔 OPEN JASA SUNTIK</span> <br> ALL SOSMED</h2>
-        <p><i class="fas fa-mouse-pointer"></i> KLIK HARGA & SOSMED — OTOMATIS DIARAHKAN KE WHATSAPP ADMIN <i class="fab fa-whatsapp" style="color:#25D366;"></i></p>
-    </div>
+    <h2>Likes TikTok</h2>
+    <table>
+      <tr><th>Jumlah</th><th>Harga</th><th>Pesan</th></tr>
+      <tr><td>1000</td><td>4K</td><td><a class="btn" href="https://wa.me/628xxxxxxx?text=Order+1000+Likes+TikTok+4K">Pesan</a></td></tr>
+      <!-- Tambahkan baris lainnya -->
+    </table>
 
-    <!-- PILIH LAYANAN SOSMED -->
-    <div class="pilih-layanan"><i class="fas fa-hashtag" style="color:#eab308;"></i> PILIH LAYANAN (klik salah satu)</div>
-    <div class="badge-section" id="serviceList">
-        <div class="service-btn active" data-service="tiktok"><i class="fab fa-tiktok"></i> TikTok</div>
-        <div class="service-btn" data-service="instagram"><i class="fab fa-instagram"></i> Instagram</div>
-        <div class="service-btn" data-service="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</div>
-        <div class="service-btn" data-service="telegram"><i class="fab fa-telegram"></i> Telegram</div>
-        <div class="service-btn" data-service="youtube"><i class="fab fa-youtube"></i> YouTube</div>
-    </div>
-
-    <!-- PILIH KATEGORI -->
-    <div class="pilih-kategori"><i class="fas fa-tags"></i> PILIH KATEGORI (klik salah satu)</div>
-    <div class="badge-section" id="categoryList">
-        <div class="category-btn active" data-category="follower">Follower</div>
-        <div class="category-btn" data-category="likes">Likes</div>
-        <div class="category-btn" data-category="member">Pengikut/Member</div>
-        <div class="category-btn" data-category="views">Views</div>
-        <div class="category-btn" data-category="komentar">Komentar</div>
-    </div>
-
-    <!-- panel dinamis harga + judul -->
-    <div class="price-panel" id="pricePanel">
-        <div class="panel-header" id="panelHeader">
-            <i class="fab fa-tiktok"></i>
-            <h3 id="panelTitle">FOLLOWER TIKTOK</h3>
-        </div>
-        <div class="price-grid" id="priceGrid">
-            <!-- akan diisi javascript -->
-        </div>
-    </div>
-
-    <!-- footer teks ajakan -->
-    <div class="footer-note">
-        <div>⚡ SOLUSI SUNTIK AMAN & TERCEPAT ADA DI SINI ⚡</div>
-        <span>GAS KEN LANGSUNG AJA ORDER <i class="fab fa-whatsapp"></i></span>
-    </div>
-    <div class="whatsapp-credit">
-        <i class="fab fa-whatsapp"></i> klik harga → langsung terhubung admin (WhatsApp)
-    </div>
-</div>
-
-<script>
-    (function() {
-        // DATABASE HARGA (format rapih sesuai list panjang)
-        const priceDB = {
-            // TikTok
-            tiktok_follower: [
-                { amount: "100 Follower", price: "4K" }, { amount: "200 Follower", price: "6K" }, { amount: "300 Follower", price: "7K" },
-                { amount: "400 Follower", price: "8K" }, { amount: "500 Follower", price: "10K" }, { amount: "600 Follower", price: "11K" },
-                { amount: "700 Follower", price: "12K" }, { amount: "800 Follower", price: "13K" }, { amount: "900 Follower", price: "14K" },
-                { amount: "1000 Follower", price: "16K" }, { amount: "1100 Follower", price: "17,5K" }, { amount: "1200 Follower", price: "19K" },
-                { amount: "1300 Follower", price: "20,5K" }, { amount: "1400 Follower", price: "22K" }, { amount: "1500 Follower", price: "23,5K" },
-                { amount: "1600 Follower", price: "25K" }, { amount: "1700 Follower", price: "26,5K" }, { amount: "1800 Follower", price: "28K" },
-                { amount: "1900 Follower", price: "29,5K" }, { amount: "2000 Follower", price: "31K" }
-            ],
-            tiktok_likes: [
-                { amount: "1000 Likes", price: "4K" }, { amount: "2000 Likes", price: "6K" }, { amount: "3000 Likes", price: "8K" },
-                { amount: "4000 Likes", price: "10K" }, { amount: "5000 Likes", price: "12K" }, { amount: "6000 Likes", price: "14K" },
-                { amount: "7000 Likes", price: "16K" }, { amount: "8000 Likes", price: "18K" }, { amount: "9000 Likes", price: "20K" },
-                { amount: "10000 Likes", price: "22K" }
-            ],
-            tiktok_views: [
-                { amount: "4000 Views", price: "2K" }, { amount: "8000 Views", price: "3K" }, { amount: "12000 Views", price: "4K" },
-                { amount: "16000 Views", price: "5K" }, { amount: "20000 Views", price: "6K" }, { amount: "24000 Views", price: "7K" },
-                { amount: "28000 Views", price: "8K" }, { amount: "32000 Views", price: "9K" }, { amount: "36000 Views", price: "10K" },
-                { amount: "40000 Views", price: "11K" }
-            ],
-            tiktok_komentar: [
-                { amount: "40 Komentar", price: "2K" }, { amount: "80 Komentar", price: "3K" }, { amount: "120 Komentar", price: "4K" },
-                { amount: "160 Komentar", price: "5K" }, { amount: "200 Komentar", price: "6K" }, { amount: "240 Komentar", price: "7K" },
-                { amount: "280 Komentar", price: "8K" }, { amount: "320 Komentar", price: "9K" }, { amount: "360 Komentar", price: "10K" },
-                { amount: "400 Komentar", price: "11K" }
-            ],
-            // WhatsApp (member)
-            whatsapp_member: [
-                { amount: "50 Pengikut", price: "3K" }, { amount: "100 Pengikut", price: "6K" }, { amount: "150 Pengikut", price: "9K" },
-                { amount: "200 Pengikut", price: "12K" }, { amount: "250 Pengikut", price: "15K" }, { amount: "300 Pengikut", price: "17K" },
-                { amount: "350 Pengikut", price: "19K" }, { amount: "400 Pengikut", price: "21K" }, { amount: "450 Pengikut", price: "22K" },
-                { amount: "500 Pengikut", price: "23K" }, { amount: "550 Pengikut", price: "24,5K" }, { amount: "600 Pengikut", price: "26K" },
-                { amount: "650 Pengikut", price: "27,5K" }, { amount: "700 Pengikut", price: "29K" }, { amount: "750 Pengikut", price: "30K" },
-                { amount: "800 Pengikut", price: "31K" }, { amount: "850 Pengikut", price: "32K" }, { amount: "900 Pengikut", price: "33K" },
-                { amount: "950 Pengikut", price: "34K" }, { amount: "1000 Pengikut", price: "35K" }
-            ],
-            // Instagram follower
-            instagram_follower: [
-                { amount: "100 Follower", price: "3K" }, { amount: "200 Follower", price: "5K" }, { amount: "300 Follower", price: "7K" },
-                { amount: "400 Follower", price: "9K" }, { amount: "500 Follower", price: "11K" }, { amount: "600 Follower", price: "12K" },
-                { amount: "700 Follower", price: "13K" }, { amount: "800 Follower", price: "14K" }, { amount: "900 Follower", price: "15K" },
-                { amount: "1000 Follower", price: "16K" }, { amount: "1100 Follower", price: "17,5K" }, { amount: "1200 Follower", price: "19K" },
-                { amount: "1300 Follower", price: "20,5K" }, { amount: "1400 Follower", price: "22K" }, { amount: "1500 Follower", price: "23,5K" },
-                { amount: "1600 Follower", price: "25K" }, { amount: "1700 Follower", price: "26K" }, { amount: "1800 Follower", price: "27K" },
-                { amount: "1900 Follower", price: "28K" }, { amount: "2000 Follower", price: "29K" }
-            ],
-            instagram_likes: [
-                { amount: "500 Likes", price: "4K" }, { amount: "1000 Likes", price: "7K" }, { amount: "1500 Likes", price: "10K" },
-                { amount: "2000 Likes", price: "13K" }, { amount: "2500 Likes", price: "15K" }, { amount: "3000 Likes", price: "17K" },
-                { amount: "3500 Likes", price: "19K" }, { amount: "4000 Likes", price: "21K" }, { amount: "4500 Likes", price: "22K" },
-                { amount: "5000 Likes", price: "23K" }
-            ],
-            instagram_views: [
-                { amount: "4000 Views", price: "3K" }, { amount: "8000 Views", price: "4K" }, { amount: "12000 Views", price: "5K" },
-                { amount: "16000 Views", price: "6K" }, { amount: "20000 Views", price: "7K" }, { amount: "24000 Views", price: "8K" },
-                { amount: "28000 Views", price: "9K" }, { amount: "32000 Views", price: "10K" }, { amount: "36000 Views", price: "11K" },
-                { amount: "40000 Views", price: "12K" }
-            ],
-            instagram_komentar: [
-                { amount: "40 Komentar", price: "2K" }, { amount: "80 Komentar", price: "3K" }, { amount: "120 Komentar", price: "4K" },
-                { amount: "160 Komentar", price: "5K" }, { amount: "200 Komentar", price: "6K" }, { amount: "240 Komentar", price: "7K" },
-                { amount: "280 Komentar", price: "8K" }, { amount: "320 Komentar", price: "9K" }, { amount: "360 Komentar", price: "10K" },
-                { amount: "400 Komentar", price: "11K" }
-            ],
-            telegram_member: [
-                { amount: "100 Pengikut", price: "1K" }, { amount: "200 Pengikut", price: "2K" }, { amount: "300 Pengikut", price: "3K" },
-                { amount: "400 Pengikut", price: "4K" }, { amount: "500 Pengikut", price: "5K" }, { amount: "600 Pengikut", price: "6K" },
-                { amount: "700 Pengikut", price: "7K" }, { amount: "800 Pengikut", price: "8K" }, { amount: "900 Pengikut", price: "9K" },
-                { amount: "1000 Pengikut", price: "10K" }
-            ],
-            youtube_likes: [
-                { amount: "500 Likes", price: "4K" }, { amount: "1000 Likes", price: "6K" }, { amount: "1500 Likes", price: "8K" },
-                { amount: "2000 Likes", price: "10K" }, { amount: "2500 Likes", price: "12K" }, { amount: "3000 Likes", price: "14K" },
-                { amount: "3500 Likes", price: "16K" }, { amount: "4000 Likes", price: "18K" }, { amount: "4500 Likes", price: "19K" },
-                { amount: "5000 Likes", price: "20K" }
-            ],
-            youtube_views: [
-                { amount: "100 Views", price: "3K" }, { amount: "200 Views", price: "6K" }, { amount: "300 Views", price: "9K" },
-                { amount: "400 Views", price: "11K" }, { amount: "500 Views", price: "13K" }, { amount: "600 Views", price: "15K" },
-                { amount: "700 Views", price: "16K" }, { amount: "800 Views", price: "18K" }, { amount: "900 Views", price: "20K" },
-                { amount: "1000 Views", price: "22K" }
-            ]
-        };
-
-        // mapping kategori ke key db
-        function getKey(service, category) {
-            if (service === 'tiktok') {
-                if (category === 'follower') return 'tiktok_follower';
-                if (category === 'likes') return 'tiktok_likes';
-                if (category === 'views') return 'tiktok_views';
-                if (category === 'komentar') return 'tiktok_komentar';
-            }
-            if (service === 'instagram') {
-                if (category === 'follower') return 'instagram_follower';
-                if (category === 'likes') return 'instagram_likes';
-                if (category === 'views') return 'instagram_views';
-                if (category === 'komentar') return 'instagram_komentar';
-            }
-            if (service === 'whatsapp' && category === 'member') return 'whatsapp_member';
-            if (service === 'telegram' && category === 'member') return 'telegram_member';
-            if (service === 'youtube') {
-                if (category === 'likes') return 'youtube_likes';
-                if (category === 'views') return 'youtube_views';
-            }
-            return null; // fallback
-        }
-
-        // display name & icon
-        const serviceIcon = {
-            tiktok: 'fab fa-tiktok',
-            instagram: 'fab fa-instagram',
-            whatsapp: 'fab fa-whatsapp',
-            telegram: 'fab fa-telegram',
-            youtube: 'fab fa-youtube'
-        };
-
-        const categoryName = {
-            follower: 'Follower',
-            likes: 'Likes',
-            member: 'Pengikut/Member',
-            views: 'Views',
-            komentar: 'Komentar'
-        };
-
-        // elemen2
-        const serviceBtns = document.querySelectorAll('.service-btn');
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const panelHeaderIcon = document.querySelector('#panelHeader i');
-        const panelTitle = document.getElementById('panelTitle');
-        const priceGrid = document.getElementById('priceGrid');
-
-        let currentService = 'tiktok';
-        let currentCategory = 'follower';
-
-        // update UI & harga
-        function updatePricePanel() {
-            const key = getKey(currentService, currentCategory);
-            let priceData = key ? priceDB[key] : null;
-
-            // jika tidak ada data (misal youtube + follower) kosongkan / fallback
-            if (!priceData) {
-                priceGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#64748b;"><i class="fas fa-circle-exclamation"></i> Layanan tidak tersedia, pilih kombinasi lain</div>`;
-                panelTitle.innerText = `${categoryName[currentCategory]?.toUpperCase() || ''} ${currentService.toUpperCase()}`;
-                panelHeaderIcon.className = serviceIcon[currentService] || 'fab fa-rocketchat';
-                return;
-            }
-
-            // update header
-            let serviceUpper = currentService === 'tiktok' ? 'TIKTOK' : 
-                              (currentService === 'instagram' ? 'INSTAGRAM' : 
-                              (currentService === 'whatsapp' ? 'WHATSAPP' : 
-                              (currentService === 'telegram' ? 'TELEGRAM' : 'YOUTUBE')));
-            let catUpper = categoryName[currentCategory]?.toUpperCase() || '';
-            panelTitle.innerText = `${catUpper} ${serviceUpper}`;
-            panelHeaderIcon.className = serviceIcon[currentService] || 'fab fa-tiktok';
-
-            // render harga
-            let htmlStr = '';
-            priceData.forEach(item => {
-                // format pesan WhatsApp
-                let message = `Halo saya mau order: ${item.amount} ${catUpper} ${serviceUpper} seharga ${item.price}`;
-                let encoded = encodeURIComponent(message);
-                let waLink = `https://wa.me/6281234567890?text=${encoded}`; // ganti nomor nanti
-                htmlStr += `<div class="price-card" onclick="window.open('${waLink}', '_blank')">
-                    <span class="amount">${item.amount}</span>
-                    <span class="price">${item.price} <small>🔗</small></span>
-                </div>`;
-            });
-            priceGrid.innerHTML = htmlStr;
-        }
-
-        // event listeners service
-        serviceBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                serviceBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentService = this.dataset.service;
-                updatePricePanel();
-            });
-        });
-
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentCategory = this.dataset.category;
-                updatePricePanel();
-            });
-        });
-
-        // inisialisasi
-        updatePricePanel();
-
-        // tambahan: agar semua price card terbuka wa (dijamin)
-        // juga sediakan fallback nomor (ubah +62 xxxx)
-        // disini kita menggunakan onclick yang digenerate, sudah include window.open
-    })();
-</script>
-
-<!-- perbaikan nomor whatsapp : untuk demo pakai 6281234567890, bisa diganti di file -->
-<!-- Catatan: logo sudah diwakili icon crown, sesuai permintaan "logo saya yang udh di revome" -->
+    <!-- Lanjutkan dengan Views, Komentar, Member, Instagram, Telegram, YouTube sesuai data -->
+  </div>
 </body>
 </html>
