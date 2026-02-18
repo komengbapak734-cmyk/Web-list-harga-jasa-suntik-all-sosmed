@@ -3,130 +3,1055 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poker Store - Jasa Suntik All Sosmed</title>
+    <title>Poker Store - Suntik All Sosmed</title>
     <style>
-        :root {
-            --primary-red: #FF0000;
-            --primary-white: #FFFFFF;
-            --primary-black: #000000;
-            --bg-color: var(--primary-white);
-            --text-color: var(--primary-black);
-            --accent-color: var(--primary-red);
-            --table-bg: rgba(255, 255, 255, 0.8); /* Transparent for light mode */
-        }
-
-        body.dark-mode {
-            --bg-color: var(--primary-black);
-            --text-color: var(--primary-white);
-            --table-bg: rgba(0, 0, 0, 0.8); /* Transparent for dark mode */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-            font-size: 16px; /* Clear font size */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.weserv.nl/?url=ibb.co/tP4FrxhC') center/cover fixed;
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1, h2, h3 {
-            color: var(--accent-color);
-        }
-
-        .logo {
-            max-width: 300px;
-            margin-bottom: 10px;
-        }
-
-        .mode-toggle {
+        /* Animated Background Overlay */
+        body::before {
+            content: '';
             position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: var(--accent-color);
-            color: var(--primary-white);
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.15) 0%, rgba(139, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.25) 100%);
+            z-index: 0;
+            animation: overlayShift 10s ease-in-out infinite;
         }
 
-        .services, .categories {
+        @keyframes overlayShift {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Floating Particles */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle, rgba(220, 20, 60, 0.8) 2px, transparent 2px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+            background-size: 80px 80px, 120px 120px;
+            z-index: 0;
+            animation: float 20s linear infinite;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-100px) translateX(50px); }
+        }
+
+        /* Logo Container */
+        .logo-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(220, 20, 60, 0.5);
             display: flex;
+            align-items: center;
             justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(220, 20, 60, 0.2);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(220, 20, 60, 0.7);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .logo-container img {
+            max-width: 140px;
+            max-height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: headerShine 3s infinite;
+        }
+
+        @keyframes headerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header p {
+            font-size: 15px;
+            opacity: 0.98;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes slideUpScale {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .menu-section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #DC143C;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 4px solid #DC143C;
+            padding-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-section h2::before {
+            content: '⚡';
+            margin-right: 8px;
+        }
+
+        .menu-buttons {
+            display: flex;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 15px;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
         }
 
-        .service-btn, .category-btn {
-            background-color: var(--accent-color);
-            color: var(--primary-white);
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
+        .menu-btn {
+            background: white;
+            border: 2px solid #DC143C;
+            color: #DC143C;
+            padding: 14px 28px;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 5px;
-            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-btn:hover, .category-btn:hover {
-            opacity: 0.8;
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.5s;
         }
 
-        .price-section {
-            margin-bottom: 40px;
+        .menu-btn:hover::before {
+            left: 100%;
+        }
+
+        .menu-btn:hover {
+            background: #DC143C;
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+        }
+
+        .menu-btn.active {
+            background: #DC143C;
+            color: white;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+        }
+
+        /* Category Section */
+        .category-section {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .category-section h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #DC143C;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 4px solid #DC143C;
+            padding-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-section h2::before {
+            content: '✨';
+            margin-right: 8px;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid #ddd;
+            color: #333;
+            padding: 11px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn:hover {
+            background: #DC143C;
+            color: white;
+            border-color: #DC143C;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .category-btn.active {
+            background: #DC143C;
+            color: white;
+            border-color: #DC143C;
+        }
+
+        /* Price Table */
+        .price-table {
+            display: none;
+            margin-top: 35px;
+            animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+        }
+
+        .price-table.active {
+            display: block;
+        }
+
+        .price-table h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-table h3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: var(--table-bg); /* Transparent table */
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid var(--text-color);
+        thead {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.95) 0%, rgba(139, 0, 0, 0.95) 100%);
+            color: white;
+            backdrop-filter: blur(10px);
         }
 
         th {
-            background-color: var(--accent-color);
-            color: var(--primary-white);
+            padding: 18px;
+            text-align: left;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        a.price-link {
-            color: var(--text-color);
-            text-decoration: none;
+        td {
+            padding: 16px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: #000;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        a.price-link:hover {
-            text-decoration: underline;
+        tbody tr {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        footer {
+        tbody tr:hover {
+            background: rgba(220, 20, 60, 0.2);
+            transform: scale(1.02);
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 20px rgba(220, 20, 60, 0.2);
+        }
+
+        .jumlah-cell {
+            color: #000;
+            font-weight: 800;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .harga-cell {
+            color: #DC143C;
+            font-weight: 800;
+            font-size: 16px;
+            text-shadow: 0 1px 3px rgba(220, 20, 60, 0.3);
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(220, 20, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .order-btn:hover::before {
+            left: 100%;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.6);
+        }
+
+        .order-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+            color: white;
+            padding: 50px 40px;
             text-align: center;
-            margin-top: 40px;
-            font-weight: bold;
-            color: var(--accent-color);
+            border-radius: 16px;
+            margin-top: 50px;
+            box-shadow: 0 15px 50px rgba(220, 20, 60, 0.4);
+            animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 15px;
+            opacity: 0.98;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+        }
+
+        /* Promo Text */
+        .promo-section {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 50px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.08) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .promo-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #DC143C;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .promo-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .promo-highlight {
+            font-size: 18px;
+            color: #8B0000;
+            font-weight: 800;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
+            border-left: 5px solid #DC143C;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 12px;
+            border-top: 4px solid #DC143C;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        footer p {
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 13px;
+            }
+
+            .logo-container {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+            }
+
+            .logo-container img {
+                max-width: 110px;
+                max-height: 70px;
+            }
+
+            .menu-section, .category-section, .promo-section {
+                padding: 25px;
+            }
+
+            .container {
+                padding: 25px 15px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+
+            .menu-buttons {
+                gap: 10px;
+            }
+
+            .menu-btn {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .cta-section {
+                padding: 35px 25px;
+            }
+
+            .cta-section h2 {
+                font-size: 22px;
+            }
+
+            .promo-title {
+                font-size: 20px;
+            }
+
+            .promo-text {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <button class="mode-toggle" onclick="toggleMode()">Toggle Mode (Sekarang: Terang)</button>
+    <div class="logo-container">
+        <img src="https://images.weserv.nl/?url=ibb.co/JjbTTdkY" alt="Poker Store Logo">
+    </div>
 
     <header>
-        <img src="logo.png" alt="Poker Store Logo" class="logo"> <!-- Ganti dengan path logo Anda -->
         <h1>OPEN JASA SUNTIK ALL SOSMED BY POKER STORE</h1>
-        <p>KLICK HARGA DAN SOSMED YANG INGIN DI SUNTIK OTOMATIS BAKALAN DI ARAHIN KE WHATSAPP ADMIN</p>
+        <p>KLIK HARGA DAN SOSMED YANG INGIN DI SUNTIK</p>
+        <p>OTOMATIS BAKALAN DI ARAHIN KE WHATSAPP ADMIN</p>
     </header>
 
-    <section class="services">
-        <h2>LAYANAN (klik salah satu)</h2>
-        <a href="#
+    <div class="container">
+        <!-- Menu Sosmed -->
+        <div class="menu-section">
+            <h2>Pilih Platform Sosial Media</h2>
+            <div class="menu-buttons">
+                <button class="menu-btn active" onclick="selectSocial(event, 'tiktok')">TikTok</button>
+                <button class="menu-btn" onclick="selectSocial(event, 'instagram')">Instagram</button>
+                <button class="menu-btn" onclick="selectSocial(event, 'youtube')">YouTube</button>
+                <button class="menu-btn" onclick="selectSocial(event, 'telegram')">Telegram</button>
+                <button class="menu-btn" onclick="selectSocial(event, 'whatsapp')">WhatsApp</button>
+            </div>
+        </div>
+
+        <!-- Kategori -->
+        <div class="category-section">
+            <h2>Pilih Jenis Layanan</h2>
+            <div class="category-buttons" id="categoryButtons">
+                <button class="category-btn active" onclick="selectCategory(event, 'tiktok', 'follower')">Follower</button>
+                <button class="category-btn" onclick="selectCategory(event, 'tiktok', 'likes')">Likes</button>
+                <button class="category-btn" onclick="selectCategory(event, 'tiktok', 'views')">Views</button>
+                <button class="category-btn" onclick="selectCategory(event, 'tiktok', 'komentar')">Komentar</button>
+            </div>
+        </div>
+
+        <!-- Tabel Harga -->
+        <div id="tablesContainer"></div>
+    </div>
+
+    <div class="container">
+        <div class="cta-section">
+            <h2>SOLUSI SUNTIK AMAN TERCEPAT ADA DI SINI</h2>
+            <p>GAS KEN LANGSUNG AJA ORDER KE WHATSAPP ADMIN</p>
+        </div>
+    </div>
+
+    <!-- Promo Section -->
+    <div class="container">
+        <div class="promo-section">
+            <div class="promo-content">
+                <div class="promo-title">✨ KENAPA HARUS POKER STORE? ✨</div>
+                <div class="promo-text">
+                    Kami menyediakan layanan suntik followers, likes, views dan engagement untuk semua platform sosial media dengan kualitas terbaik dan harga termurah di pasaran!
+                </div>
+                <div class="promo-text">
+                    ✓ Proses Cepat (1-24 jam) | ✓ Real & Aman | ✓ Harga Kompetitif | ✓ Support 24/7
+                </div>
+                <div class="promo-highlight">
+                    "Tingkatkan popularity Anda sekarang dan raih kesempatan emas menjadi content creator terkenal! Ribuan pelanggan telah merasakan manfaatnya. Jangan ketinggalan!"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Poker Store. Semua Hak Dilindungi. | Hubungi Admin: wa.me/6287780575005</p>
+    </footer>
+
+    <script>
+        const waNumber = '6287780575005';
+        let currentSocial = 'tiktok';
+
+        const priceData = {
+            tiktok: {
+                follower: [
+                    { jumlah: '100 Follower', harga: '4K' },
+                    { jumlah: '200 Follower', harga: '6K' },
+                    { jumlah: '300 Follower', harga: '7K' },
+                    { jumlah: '400 Follower', harga: '8K' },
+                    { jumlah: '500 Follower', harga: '10K' },
+                    { jumlah: '600 Follower', harga: '11K' },
+                    { jumlah: '700 Follower', harga: '12K' },
+                    { jumlah: '800 Follower', harga: '13K' },
+                    { jumlah: '900 Follower', harga: '14K' },
+                    { jumlah: '1000 Follower', harga: '16K' },
+                    { jumlah: '1100 Follower', harga: '17,5K' },
+                    { jumlah: '1200 Follower', harga: '19K' },
+                    { jumlah: '1300 Follower', harga: '20,5K' },
+                    { jumlah: '1400 Follower', harga: '22K' },
+                    { jumlah: '1500 Follower', harga: '23,5K' },
+                    { jumlah: '1600 Follower', harga: '25K' },
+                    { jumlah: '1700 Follower', harga: '26,5K' },
+                    { jumlah: '1800 Follower', harga: '28K' },
+                    { jumlah: '1900 Follower', harga: '29,5K' },
+                    { jumlah: '2000 Follower', harga: '31K' }
+                ],
+                likes: [
+                    { jumlah: '1000 Likes', harga: '4K' },
+                    { jumlah: '2000 Likes', harga: '6K' },
+                    { jumlah: '3000 Likes', harga: '8K' },
+                    { jumlah: '4000 Likes', harga: '10K' },
+                    { jumlah: '5000 Likes', harga: '12K' },
+                    { jumlah: '6000 Likes', harga: '14K' },
+                    { jumlah: '7000 Likes', harga: '16K' },
+                    { jumlah: '8000 Likes', harga: '18K' },
+                    { jumlah: '9000 Likes', harga: '20K' },
+                    { jumlah: '10000 Likes', harga: '22K' }
+                ],
+                views: [
+                    { jumlah: '4000 Views', harga: '2K' },
+                    { jumlah: '8000 Views', harga: '3K' },
+                    { jumlah: '12000 Views', harga: '4K' },
+                    { jumlah: '16000 Views', harga: '5K' },
+                    { jumlah: '20000 Views', harga: '6K' },
+                    { jumlah: '24000 Views', harga: '7K' },
+                    { jumlah: '28000 Views', harga: '8K' },
+                    { jumlah: '32000 Views', harga: '9K' },
+                    { jumlah: '36000 Views', harga: '10K' },
+                    { jumlah: '40000 Views', harga: '11K' }
+                ],
+                komentar: [
+                    { jumlah: '40 Komentar', harga: '2K' },
+                    { jumlah: '80 Komentar', harga: '3K' },
+                    { jumlah: '120 Komentar', harga: '4K' },
+                    { jumlah: '160 Komentar', harga: '5K' },
+                    { jumlah: '200 Komentar', harga: '6K' },
+                    { jumlah: '240 Komentar', harga: '7K' },
+                    { jumlah: '280 Komentar', harga: '8K' },
+                    { jumlah: '320 Komentar', harga: '9K' },
+                    { jumlah: '360 Komentar', harga: '10K' },
+                    { jumlah: '400 Komentar', harga: '11K' }
+                ]
+            },
+            instagram: {
+                follower: [
+                    { jumlah: '100 Follower', harga: '3K' },
+                    { jumlah: '200 Follower', harga: '5K' },
+                    { jumlah: '300 Follower', harga: '7K' },
+                    { jumlah: '400 Follower', harga: '9K' },
+                    { jumlah: '500 Follower', harga: '11K' },
+                    { jumlah: '600 Follower', harga: '12K' },
+                    { jumlah: '700 Follower', harga: '13K' },
+                    { jumlah: '800 Follower', harga: '14K' },
+                    { jumlah: '900 Follower', harga: '15K' },
+                    { jumlah: '1000 Follower', harga: '16K' },
+                    { jumlah: '1100 Follower', harga: '17,5K' },
+                    { jumlah: '1200 Follower', harga: '19K' },
+                    { jumlah: '1300 Follower', harga: '20,5K' },
+                    { jumlah: '1400 Follower', harga: '22K' },
+                    { jumlah: '1500 Follower', harga: '23,5K' },
+                    { jumlah: '1600 Follower', harga: '25K' },
+                    { jumlah: '1700 Follower', harga: '26K' },
+                    { jumlah: '1800 Follower', harga: '27K' },
+                    { jumlah: '1900 Follower', harga: '28K' },
+                    { jumlah: '2000 Follower', harga: '29K' }
+                ],
+                likes: [
+                    { jumlah: '500 Likes', harga: '4K' },
+                    { jumlah: '1000 Likes', harga: '7K' },
+                    { jumlah: '1500 Likes', harga: '10K' },
+                    { jumlah: '2000 Likes', harga: '13K' },
+                    { jumlah: '2500 Likes', harga: '15K' },
+                    { jumlah: '3000 Likes', harga: '17K' },
+                    { jumlah: '3500 Likes', harga: '19K' },
+                    { jumlah: '4000 Likes', harga: '21K' },
+                    { jumlah: '4500 Likes', harga: '22K' },
+                    { jumlah: '5000 Likes', harga: '23K' }
+                ],
+                views: [
+                    { jumlah: '4000 Views', harga: '3K' },
+                    { jumlah: '8000 Views', harga: '4K' },
+                    { jumlah: '12000 Views', harga: '5K' },
+                    { jumlah: '16000 Views', harga: '6K' },
+                    { jumlah: '20000 Views', harga: '7K' },
+                    { jumlah: '24000 Views', harga: '8K' },
+                    { jumlah: '28000 Views', harga: '9K' },
+                    { jumlah: '32000 Views', harga: '10K' },
+                    { jumlah: '36000 Views', harga: '11K' },
+                    { jumlah: '40000 Views', harga: '12K' }
+                ],
+                komentar: [
+                    { jumlah: '40 Komentar', harga: '2K' },
+                    { jumlah: '80 Komentar', harga: '3K' },
+                    { jumlah: '120 Komentar', harga: '4K' },
+                    { jumlah: '160 Komentar', harga: '5K' },
+                    { jumlah: '200 Komentar', harga: '6K' },
+                    { jumlah: '240 Komentar', harga: '7K' },
+                    { jumlah: '280 Komentar', harga: '8K' },
+                    { jumlah: '320 Komentar', harga: '9K' },
+                    { jumlah: '360 Komentar', harga: '10K' },
+                    { jumlah: '400 Komentar', harga: '11K' }
+                ]
+            },
+            youtube: {
+                likes: [
+                    { jumlah: '500 Likes', harga: '4K' },
+                    { jumlah: '1000 Likes', harga: '6K' },
+                    { jumlah: '1500 Likes', harga: '8K' },
+                    { jumlah: '2000 Likes', harga: '10K' },
+                    { jumlah: '2500 Likes', harga: '12K' },
+                    { jumlah: '3000 Likes', harga: '14K' },
+                    { jumlah: '3500 Likes', harga: '16K' },
+                    { jumlah: '4000 Likes', harga: '18K' },
+                    { jumlah: '4500 Likes', harga: '19K' },
+                    { jumlah: '5000 Likes', harga: '20K' }
+                ],
+                views: [
+                    { jumlah: '100 Views', harga: '3K' },
+                    { jumlah: '200 Views', harga: '6K' },
+                    { jumlah: '300 Views', harga: '9K' },
+                    { jumlah: '400 Views', harga: '11K' },
+                    { jumlah: '500 Views', harga: '13K' },
+                    { jumlah: '600 Views', harga: '15K' },
+                    { jumlah: '700 Views', harga: '16K' },
+                    { jumlah: '800 Views', harga: '18K' },
+                    { jumlah: '900 Views', harga: '20K' },
+                    { jumlah: '1000 Views', harga: '22K' }
+                ]
+            },
+            telegram: {
+                pengikut: [
+                    { jumlah: '100 Pengikut', harga: '1K' },
+                    { jumlah: '200 Pengikut', harga: '2K' },
+                    { jumlah: '300 Pengikut', harga: '3K' },
+                    { jumlah: '400 Pengikut', harga: '4K' },
+                    { jumlah: '500 Pengikut', harga: '5K' },
+                    { jumlah: '600 Pengikut', harga: '6K' },
+                    { jumlah: '700 Pengikut', harga: '7K' },
+                    { jumlah: '800 Pengikut', harga: '8K' },
+                    { jumlah: '900 Pengikut', harga: '9K' },
+                    { jumlah: '1000 Pengikut', harga: '10K' }
+                ]
+            },
+            whatsapp: {
+                pengikut: [
+                    { jumlah: '50 Pengikut', harga: '3K' },
+                    { jumlah: '100 Pengikut', harga: '6K' },
+                    { jumlah: '150 Pengikut', harga: '9K' },
+                    { jumlah: '200 Pengikut', harga: '12K' },
+                    { jumlah: '250 Pengikut', harga: '15K' },
+                    { jumlah: '300 Pengikut', harga: '17K' },
+                    { jumlah: '350 Pengikut', harga: '19K' },
+                    { jumlah: '400 Pengikut', harga: '21K' },
+                    { jumlah: '450 Pengikut', harga: '22K' },
+                    { jumlah: '500 Pengikut', harga: '23K' },
+                    { jumlah: '550 Pengikut', harga: '24,5K' },
+                    { jumlah: '600 Pengikut', harga: '26K' },
+                    { jumlah: '650 Pengikut', harga: '27,5K' },
+                    { jumlah: '700 Pengikut', harga: '29K' },
+                    { jumlah: '750 Pengikut', harga: '30K' },
+                    { jumlah: '800 Pengikut', harga: '31K' },
+                    { jumlah: '850 Pengikut', harga: '32K' },
+                    { jumlah: '900 Pengikut', harga: '33K' },
+                    { jumlah: '950 Pengikut', harga: '34K' },
+                    { jumlah: '1000 Pengikut', harga: '35K' }
+                ]
+            }
+        };
+
+        function selectSocial(e, social) {
+            currentSocial = social;
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            updateCategories();
+            renderTables();
+        }
+
+        function updateCategories() {
+            const categoryButtons = document.getElementById('categoryButtons');
+            let categories = [];
+
+            if (currentSocial === 'tiktok' || currentSocial === 'instagram') {
+                categories = ['follower', 'likes', 'views', 'komentar'];
+            } else if (currentSocial === 'youtube') {
+                categories = ['likes', 'views'];
+            } else if (currentSocial === 'telegram' || currentSocial === 'whatsapp') {
+                categories = ['pengikut'];
+            }
+
+            categoryButtons.innerHTML = categories.map((cat, idx) => 
+                `<button class="category-btn ${idx === 0 ? 'active' : ''}" 
+                         onclick="selectCategory(event, '${currentSocial}', '${cat}')">${
+                            cat.charAt(0).toUpperCase() + cat.slice(1)
+                         }</button>`
+            ).join('');
+        }
+
+        function selectCategory(e, social, category) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            renderTables();
+        }
+
+        function renderTables() {
+            const container = document.getElementById('tablesContainer');
+            const activeCategory = document.querySelector('.category-btn.active')?.textContent.toLowerCase();
+            
+            let data = [];
+            let categoryKey = activeCategory === 'komentar' ? 'komentar' : 
+                              activeCategory === 'pengikut' ? 'pengikut' :
+                              activeCategory.replace(/\s+/g, '').toLowerCase();
+
+            if (priceData[currentSocial] && priceData[currentSocial][categoryKey]) {
+                data = priceData[currentSocial][categoryKey];
+            }
+
+            if (data.length === 0) {
+                container.innerHTML = '<p>Data tidak tersedia</p>';
+                return;
+            }
+
+            const capitalizedCategory = activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1);
+            const capitalizedSocial = currentSocial.charAt(0).toUpperCase() + currentSocial.slice(1);
+
+            let tableHTML = `
+                <div class="price-table active">
+                    <h3>${capitalizedSocial} ${capitalizedCategory}</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(item => `
+                                <tr>
+                                    <td class="jumlah-cell">${item.jumlah}</td>
+                                    <td class="harga-cell">Rp ${item.harga}</td>
+                                    <td>
+                                        <button class="order-btn" onclick="orderNow('${item.jumlah}', '${item.harga}', '${capitalizedSocial}', '${capitalizedCategory}')">
+                                            Pesan
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            container.innerHTML = tableHTML;
+        }
+
+        function orderNow(jumlah, harga, platform, category) {
+            const message = `Halo, saya ingin memesan:%0ALayanan: ${platform} ${category}%0AJumlah: ${jumlah}%0AHarga: Rp ${harga}`;
+            window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
+        }
+
+        updateCategories();
+        renderTables();
+    </script>
+</body>
+</html>
